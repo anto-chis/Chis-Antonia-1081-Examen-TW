@@ -67,7 +67,7 @@ async function getParticipantById(id){
 }
 
 app.get("/meeting", async(req, res)=>{
-    const {descriptionLike, onDate} = req.query;
+    const {descriptionLike, onDate, sortDate, pageSize, pageIndex} = req.query;
 
     const where = {};
 
@@ -85,8 +85,22 @@ app.get("/meeting", async(req, res)=>{
             [Op.lt]: dayEnd
         };
     }
+    const order = [];
+    if(sortDate && sortDate == "ASC" || sortDate == "DESC"){
+        order.push(["data", sortDate]);
+    }
 
-    const meetings = await Meeting.findAll({where});
+    const paginationData = {};
+
+    if(pageSize && pageIndex!==undefined) {
+        const pageS = Number(pageSize);
+        const pageI = Number(pageIndex);
+        paginationData.offset = pageS*pageI;
+        paginationData.limit = pageS;
+    }
+    console.log(paginationData)
+
+    const meetings = await Meeting.findAll({...paginationData, where, order });
     res.json({result:meetings});
 })
 
