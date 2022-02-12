@@ -1,0 +1,7 @@
+.lista-meetings{
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}

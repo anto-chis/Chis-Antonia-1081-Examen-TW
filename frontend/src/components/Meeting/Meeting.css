@@ -1,0 +1,29 @@
+.meeting{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 18px;
+    margin: 21px;
+    cursor: pointer;
+}
+
+.data {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.descriere {
+    font-size: 14px;
+    color: #424242;
+    font-style: italic;
+    align-self: flex-start;
+    margin: 12px 0;
+}
+.url{
+    font-weight: bold;
+    font-size: 14px;
+    color: #455A64;
+}
